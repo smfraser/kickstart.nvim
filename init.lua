@@ -918,7 +918,20 @@ require('lazy').setup({
           -- miscs = {}, -- Uncomment to turn off hard-coded styles
         },
         color_overrides = {},
-        custom_highlights = {},
+        custom_highlights = function(colors)
+          return {
+            -- Make Lazy UI opaque by explicitly setting its background color
+            LazyNormal = { bg = colors.mantle },
+            -- Other UI elements related to Lazy
+            NormalFloat = { bg = colors.mantle },
+            FloatBorder = { bg = colors.mantle },
+
+            -- You can add more specific Lazy UI elements if needed
+            LazyButtonActive = { bg = colors.surface0 },
+            LazyProgressDone = { bg = colors.surface0 },
+            LazyProgressTodo = { bg = colors.surface0 },
+          }
+        end,
         default_integrations = true,
         integrations = {
           blink_cmp = true,
